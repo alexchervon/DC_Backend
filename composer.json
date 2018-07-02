@@ -1,0 +1,16 @@
+{
+    "name": "rest/api",
+    "description": "this my first rest full api for react app",
+    "require": {
+        "joshcam/mysqli-database-class": "dev-master",
+        "aura/filter": "^2.3",
+        "altorouter/altorouter": "1.1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "alexchervon",
+            "email": "super.tchervon2011@yandex.ru"
+        }
+    ]
+}
