@@ -1,5 +1,7 @@
 <?php
+
 namespace Models;
+
 use Models\Bdo;
 
 class Model_About extends Bdo

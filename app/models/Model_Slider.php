@@ -1,5 +1,7 @@
 <?php
+
 namespace Models;
+
 use Models\Bdo;
 
 class Model_Slider extends Bdo

@@ -1,5 +1,7 @@
 <?php
+
 namespace Controllers;
+
 use Aura\Filter\FilterFactory;
 use Models\Model_Form;
 
@@ -18,19 +20,19 @@ class Controller_Form
         $filter_factory = new FilterFactory();
         $filter = $filter_factory->newSubjectFilter();
 
-        if (isset($_POST['name'])){
+        if (isset($_POST['name'])) {
             $filter->validate('name')
                 ->isNotBlank()
                 ->asSoftRule('Имя пользователя введено не верно!');
         }
 
-        if (isset($_POST['number'])){
+        if (isset($_POST['number'])) {
             $filter->validate('number')
-                ->is('regex',"/^[0-9]{10,11}+$/")
+                ->is('regex', "/^[0-9]{10,11}+$/")
                 ->asSoftRule('Номер телефона введен не верно!');
         }
 
-        if (isset($_POST['email'])){
+        if (isset($_POST['email'])) {
             $filter->validate('email')
                 ->is('email')
                 ->asSoftRule('Электронная почта введена не верно!');
@@ -42,14 +44,14 @@ class Controller_Form
 
         if (!$success) {
             $error = array(
-                'success'=>false,
-                'errors'=>$failures->getMessages()
+                'success' => false,
+                'errors' => $failures->getMessages()
             );
 
             echo json_encode($error);
             die();
         } else {
-            echo json_encode(array('success'=>true));
+            echo json_encode(array('success' => true));
         }
 
 

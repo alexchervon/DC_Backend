@@ -1,5 +1,7 @@
 <?php
+
 namespace Models;
+
 use MysqliDb;
 
 class Bdo

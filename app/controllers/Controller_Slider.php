@@ -1,5 +1,7 @@
 <?php
+
 namespace Controllers;
+
 use Models\Model_Slider;
 
 class Controller_Slider
@@ -16,16 +18,16 @@ class Controller_Slider
     {
         $sqlData = $this->model->getItems();
 
-        foreach ($sqlData as $items){
+        foreach ($sqlData as $items) {
             $this->data[] = array(
-                'header'=>$items['head'],
-                'info'=>$items['tagline'],
-                'button'=>$items['button'],
-                'link'=>$items['href'],
-                'image'=>$items['image']
+                'header' => $items['head'],
+                'info' => $items['tagline'],
+                'button' => $items['button'],
+                'link' => $items['href'],
+                'image' => $items['image']
             );
         }
-        echo  json_encode($this->data);
+        echo json_encode($this->data);
     }
 
 }

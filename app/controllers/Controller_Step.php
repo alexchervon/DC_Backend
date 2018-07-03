@@ -1,5 +1,7 @@
 <?php
+
 namespace Controllers;
+
 use Models\Model_Step;
 
 class Controller_Step
@@ -16,14 +18,14 @@ class Controller_Step
     {
         $sqlData = $this->model->getItems();
 
-        foreach ($sqlData as $items){
+        foreach ($sqlData as $items) {
             $this->data[] = array(
-                'image'=>$items['image'],
-                'name'=>$items['name'],
-                'info'=>$items['info']
+                'image' => $items['image'],
+                'name' => $items['name'],
+                'info' => $items['info']
             );
         }
-        echo  json_encode($this->data);
+        echo json_encode($this->data);
     }
 
 }
