@@ -1,27 +1,41 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *, X-Requested-With, Content-Type, Accept");
+header('Content-Type: text/html; charset=utf-8');
 require_once 'vendor/autoload.php';
-require_once 'api.php';
-
+use Controllers\Controller_Slider;
 $router = new AltoRouter();
-$DataBase = new MysqliDb ('localhost', 'root', 'root', 'api');
-$Api = new Api($DataBase);
-
 
 // Получение данных для слайдера
-$router->map('GET','/slider',function(){
-     global $Api;
-     $Api->getSliderItems();
-});
+$router->map('GET','/slider/items/','Slider#Items');
+
+// Получение данных для About
+$router->map('GET','/about/items/','About#Items');
+
+// Получение данных для Step
+$router->map('GET','/step/items/','Step#Items');
+
+// Получение данных для Work
+$router->map('GET','/works/items/','Work#Items');
+
+// Получение данных для Detail
+$router->map('GET','/works/detail/[i:id]/','Work#Detail');
+
+// Валидация полей
+$router->map('POST','/valid/','Form#Validate');
 
 $match = $router->match();
 
-
-if($match && is_callable($match['target'])) {
-	call_user_func_array($match['target'],$match['params']); 
+if ($match === false) {
+    echo 'method not found';
 } else {
-	header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    $prefix = 'Controller_';
+    list($controller, $action ) = explode('#', $match['target']);
+    $className = 'Controllers\\'.$prefix.$controller;
+    $exempl = new $className();
+    if (is_callable(array($exempl, $action))) {
+        call_user_func_array(array($exempl,$action), array($match['params']));
+    } else {
+        echo $prefix.$controller;
+    }
 }
