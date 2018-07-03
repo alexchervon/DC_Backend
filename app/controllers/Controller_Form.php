@@ -5,7 +5,7 @@ namespace Controllers;
 use Aura\Filter\FilterFactory;
 use Models\Model_Form;
 
-class Controller_Form
+class Controller_Form extends Controller
 {
     public $model = null;
     public $data = array();
@@ -51,6 +51,7 @@ class Controller_Form
             echo json_encode($error);
             die();
         } else {
+            $this->model->setData($_POST);
             echo json_encode(array('success' => true));
         }
 

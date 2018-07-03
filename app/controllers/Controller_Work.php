@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Models\Model_Work;
 
-class Controller_Work
+class Controller_Work extends Controller
 {
     public $model = null;
     public $data = array();

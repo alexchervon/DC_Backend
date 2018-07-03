@@ -25,4 +25,11 @@ class Model_Form extends Bdo
         return $this->SQL->get('Info');
     }
 
+    public function setData($data)
+    {
+        $result = $this->SQL->insert ('form', $data);
+        if($result)
+            echo 'data saves';
+    }
+
 }

@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Models\Model_About;
 
-class Controller_About
+class Controller_About extends Controller
 {
     public $model = null;
     public $data = array();

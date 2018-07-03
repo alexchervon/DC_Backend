@@ -4,7 +4,7 @@ header("Access-Control-Allow-Headers: *, X-Requested-With, Content-Type, Accept"
 header('Content-Type: text/html; charset=utf-8');
 require_once 'vendor/autoload.php';
 
-use Controllers\Controller_Slider;
+use \Controllers\Controller;
 
 $router = new AltoRouter();
 
@@ -35,9 +35,7 @@ if ($match === false) {
     list($controller, $action) = explode('#', $match['target']);
     $className = 'Controllers\\' . $prefix . $controller;
     $exempl = new $className();
-    if (is_callable(array($exempl, $action))) {
-        call_user_func_array(array($exempl, $action), array($match['params']));
-    } else {
-        echo $prefix . $controller;
+    if ($exempl instanceof Controller) {
+        $exempl->callAction($action,$match['params']);
     }
 }

@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Models\Model_Slider;
 
-class Controller_Slider
+class Controller_Slider extends Controller
 {
     public $model = null;
     public $data = array();

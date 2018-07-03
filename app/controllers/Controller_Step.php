@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Models\Model_Step;
 
-class Controller_Step
+class Controller_Step extends Controller
 {
     public $model = null;
     public $data = array();
